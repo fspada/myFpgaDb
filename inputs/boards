@@ -1,9 +1,8 @@
-Release 14.1 - PartGen P.15xf (lin)
+Release 14.4 - PartGen P.49d (lin)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 xa7a100t		SPEEDS:		-2I    -1I    -1Q
         csg324
         fgg484
-        fgg676
         ftg256
 xa2c32a		SPEEDS:		-6    -7
         VQ44
@@ -28,10 +27,6 @@ xc7a200t		SPEEDS:		-3    -2    -1    -2L
         fbg676
         ffg1156
         sbg484
-xc7a350t		SPEEDS:		-3    -2    -1    -2L
-        fbg484
-        fbg676
-        ffg1156
 xc7a100tl		SPEEDS:		-2L
         csg324
         fgg484
@@ -42,10 +37,6 @@ xc7a200tl		SPEEDS:		-2L
         fbg676
         ffg1156
         sbg484
-xc7a350tl		SPEEDS:		-2L
-        fbg484
-        fbg676
-        ffg1156
 xa3s50		SPEEDS:		-4    -4Q    (Minimum speed data available)
         vqg100
         pqg208
@@ -120,18 +111,20 @@ xa6slx25t		SPEEDS:		-3    -2    -3Q    -2Q
 xa6slx45		SPEEDS:		-3    -2    -3Q    -2Q
         fgg484
         csg324
+        csg484
 xa6slx45t		SPEEDS:		-3    -2    -3Q    -2Q
         fgg484
         csg324
 xa6slx75		SPEEDS:		-3    -2    -3Q    -2Q
         fgg484
+        csg484
 xa6slx75t		SPEEDS:		-3    -2    -3Q    -2Q
         fgg484
 xa6slx100		SPEEDS:		-2    -2Q
         fgg484
 xa7z010		SPEEDS:		-1I    -1Q
         clg400
-        clg484
+        clg225
 xa7z020		SPEEDS:		-1I    -1Q
         clg400
         clg484
@@ -185,16 +178,13 @@ xc7k420tl		SPEEDS:		-2L
 xc7k480tl		SPEEDS:		-2L
         ffg901
         ffg1156
-xq7a100t		SPEEDS:		-2I    -1I    -2L    -1M
+xq7a100t		SPEEDS:		-2I    -1I    -1M    -2L
         cs324
         fg484
-xq7a200t		SPEEDS:		-2I    -1I    -2L    -1M
+xq7a200t		SPEEDS:		-2I    -1I    -1M    -2L
         fb484
         fb676
         sb484
-xq7a350t		SPEEDS:		-2I    -1I    -2L    -1M
-        fb484
-        fb676
 xq7a100tl		SPEEDS:		-2L
         cs324
         fg484
@@ -202,13 +192,10 @@ xq7a200tl		SPEEDS:		-2L
         fb484
         fb676
         sb484
-xq7a350tl		SPEEDS:		-2L
-        fb484
-        fb676
-xq7k325t		SPEEDS:		-2I    -1I    -2L    -1M
+xq7k325t		SPEEDS:		-2I    -1I    -1M    -2L
         rf676
         rf900
-xq7k410t		SPEEDS:		-2I    -1I    -2L    -1M
+xq7k410t		SPEEDS:		-2I    -1I    -1M    -2L
         rf676
         rf900
 xq7k325tl		SPEEDS:		-2L
@@ -341,33 +328,19 @@ xq6vsx475tl		SPEEDS:		-1L
         rf1759
 xq6vlx550tl		SPEEDS:		-1L
         rf1759
-xq7vx330t		SPEEDS:		-2I    -1I    -2L    -1M
+xq7vx330t		SPEEDS:		-2I    -1I    -1M    -2L
         rf1157
         rf1761
-xq7vx485t		SPEEDS:		-2I    -1I    -2L    -1M
+xq7vx485t		SPEEDS:		-2I    -1I    -1M    -2L
         rf1761
         rf1930
-xq7v585t		SPEEDS:		-2I    -1I    -2L    -1M
+xq7v585t		SPEEDS:		-2I    -1I    -1M    -2L
         rf1157
         rf1761
 xq7vx690t		SPEEDS:		-2I    -1I    -2L
         rf1761
         rf1930
 xq7vx980t		SPEEDS:		-2L    -1I
-        rf1930
-xq7vx330tl		SPEEDS:		-2L
-        rf1157
-        rf1761
-xq7vx485tl		SPEEDS:		-2L
-        rf1761
-        rf1930
-xq7v585tl		SPEEDS:		-2L
-        rf1157
-        rf1761
-xq7vx690tl		SPEEDS:		-2L
-        rf1761
-        rf1930
-xq7vx980tl		SPEEDS:		-2L
         rf1930
 xq7z020		SPEEDS:		-2I    -1I    -1Q
         cl400
@@ -777,8 +750,6 @@ xc6vlx550tl		SPEEDS:		-1L
         ff1760
 xc6vlx760l		SPEEDS:		-1L
         ff1760
-xc7vh290t		SPEEDS:		-2    -1    -2G
-        hcg1155
 xc7vx330t		SPEEDS:		-3    -2    -1    -2L
         ffg1157
         ffg1761
@@ -795,7 +766,7 @@ xc7vx485t		SPEEDS:		-3    -2    -1    -2L
 xc7vx550t		SPEEDS:		-3    -2    -1    -2L
         ffg1158
         ffg1927
-xc7vh580t		SPEEDS:		-2    -1    -2G
+xc7vh580t		SPEEDS:		-2    -1    -2G    -2L
         hcg1155
         hcg1931
         hcg1932
@@ -809,63 +780,18 @@ xc7vx690t		SPEEDS:		-3    -2    -1    -2L
         ffg1926
         ffg1927
         ffg1930
-xc7vh870t		SPEEDS:		-2    -1    -2G
+xc7vh870t		SPEEDS:		-2    -1    -2G    -2L
         hcg1931
         hcg1932
 xc7vx980t		SPEEDS:		-2    -1    -2L
         ffg1926
         ffg1928
         ffg1930
-        ffg1933
 xc7vx1140t		SPEEDS:		-2    -1    -2G    -2L
         flg1930
         flg1928
-        flg1933
         flg1926
-xc7v1500t		SPEEDS:		-2    -1    -2G    -2L
-        flg1761
 xc7v2000t		SPEEDS:		-2    -1    -2G    -2L
-        flg1925
-        fhg1761
-xc7vx330tl		SPEEDS:		-2L
-        ffg1157
-        ffg1761
-xc7vx415tl		SPEEDS:		-2L
-        ffg1157
-        ffg1158
-        ffg1927
-xc7vx485tl		SPEEDS:		-2L
-        ffg1157
-        ffg1158
-        ffg1761
-        ffg1927
-        ffg1930
-xc7vx550tl		SPEEDS:		-2L
-        ffg1158
-        ffg1927
-xc7v585tl		SPEEDS:		-2L
-        ffg1157
-        ffg1761
-xc7vx690tl		SPEEDS:		-2L
-        ffg1157
-        ffg1158
-        ffg1761
-        ffg1926
-        ffg1927
-        ffg1930
-xc7vx980tl		SPEEDS:		-2L
-        ffg1926
-        ffg1928
-        ffg1930
-        ffg1933
-xc7vx1140tl		SPEEDS:		-2L
-        flg1930
-        flg1928
-        flg1933
-        flg1926
-xc7v1500tl		SPEEDS:		-2L
-        flg1761
-xc7v2000tl		SPEEDS:		-2L
         flg1925
         fhg1761
 xa9536xl		SPEEDS:		-15
@@ -1002,7 +928,7 @@ xcr3512xl		SPEEDS:		-7    -10    -12
         FG324
 xc7z010		SPEEDS:		-3    -2    -1
         clg400
-        clg484
+        clg225
 xc7z020		SPEEDS:		-3    -2    -1
         clg400
         clg484
