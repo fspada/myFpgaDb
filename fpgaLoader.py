@@ -111,6 +111,9 @@ class Fpga():
 			self.lock.acquire()
 			self.session.commit()
 			self.lock.release()
+		self.lock.acquire()
+		self.session.commit()
+		self.lock.release()
 		self.fd.close()
 
 	def __checkBoard(self):
