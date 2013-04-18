@@ -22,9 +22,9 @@ class Fpga():
 			words = line.split()
 			if words[0] == '<tile':
 				row = self.FpgaTable()
-				row.model = self.fpgaName
-				#row.version=self.fpgaVersion
-				#row.speed=self.fpgaSpeed
+				row.model = self.fpgaModel
+				row.version=self.fpgaVersion
+				row.speed=self.fpgaSpeed
 				row.x = words[1].split('"')[1]
 				row.y = words[2].split('"')[1]
 				obj = re.match(r"(.+)_X([0-9]+)Y([0-9]+)", words[3].split('"')[1])
@@ -50,6 +50,8 @@ class Fpga():
 					while words[0] == '<primitive_site':
 						row2 = self.FpgaTable()
 						row2.model = row.model
+						row2.version = row.version
+						row2.speed = row.speed
 						row2.x = row.x
 						row2.y = row.y
 						row2.genericType = row.genericType
@@ -95,10 +97,10 @@ class Fpga():
 
 	def __addBoard(self, speed=1):
 		# generate xdlrc
-		if (not os.path.exists(self.xdlrcName)):
-			os.system("xdl -report " + self.fpgaName)
-			os.system("mv *.xdlrc inputs/")
 		if (not os.path.exists(self.xmlFilename)):
+			if (not os.path.exists(self.xdlrcName)):
+				os.system("xdl -report " + self.fpgaName)
+				os.system("mv *.xdlrc inputs/")
 			os.system("python scripts/xdlrc2xml.py inputs/" + self.fpgaName + ".xdlrc")
 		self.fd = open(self.xmlFilename, "r")
 		self.lock = Lock()
@@ -112,16 +114,37 @@ class Fpga():
 		self.fd.close()
 
 	def __checkBoard(self):
-		if len(self.session.query(self.FpgaTable).filter(self.FpgaTable.model==self.fpgaName).all()) != 0:
+		if len(self.session.query(self.FpgaTable).filter(self.FpgaTable.model==self.fpgaModel, self.FpgaTable.version==self.fpgaVersion, self.FpgaTable.speed==self.fpgaSpeed).all()) != 0:
 			return True
 		else:
 			return False
 
+	def __fixFpgaName(self):
+		if (not os.path.exists(self.boards_PARSED_name)):
+			if (not os.path.exists(self.boards_name)):
+				os.system("partgen -i > " + self.boards_name)
+			os.system("python scripts/parser_boards.py " + self.boards_name)
+		fd = open(self.boards_PARSED_name, "r")
+		while 1:
+			line = fd.readline()
+			if not line:
+				break
+			words = line.split()
+			if self.fpgaName == ('').join(words) or self.fpgaName == words[0]:
+				self.fpgaModel = words[0]
+				self.fpgaVersion = words[1]
+				self.fpgaSpeed = words[2]
+				self.fpgaName = ('').join(words)
+				break
+		fd.close()
+		self.xdlrcName = "inputs/" + self.fpgaName + ".xdlrc"
+		self.xmlFilename = "inputs/" + self.fpgaName + ".xml"
+
 	def loadFpga(self, fpgaName):
 		self.fpgaName = fpgaName
-		self.dbName = "fpgaDb/fpgaDb.db"
-		self.xdlrcName = "inputs/" + fpgaName + ".xdlrc"
-		self.xmlFilename = "inputs/" + fpgaName + ".xml"
+		self.dbName = "fpgaDbs/fpgaDb.db"
+		self.boards_name = "inputs/boards"
+		self.boards_PARSED_name = "inputs/boards_PARSED.txt"
 		if (not os.path.exists(self.dbName)):
 			self.dbEmpty = True
 			f = open(self.dbName, "w")
@@ -133,7 +156,10 @@ class Fpga():
 			self.__initTable()
 		else:
 			self.__loadTable()
+		self.__fixFpgaName()
 		if self.__checkBoard():
 			print "Board already exists"
 		else:
 			self.__addBoard()
+
+
